@@ -1,0 +1,11 @@
+@import "../../../utils/colors";
+
+.container {
+  flex-basis: 45%;
+  box-sizing: border-box;
+  border: none;
+  padding: 9px;
+  margin: 0;
+  background-color: $white;
+}
+

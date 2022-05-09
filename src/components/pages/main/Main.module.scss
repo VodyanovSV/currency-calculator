@@ -1,0 +1,23 @@
+@import "../../../utils/colors";
+
+.container {
+
+  min-height: 100vh;
+  background-image: url("../../../assets/images/app-bg.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+
+  .wrap {
+    margin-top: 100px;
+
+    .title {
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: $white;
+      margin-bottom: 20px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@import "../../../../utils/colors";
+
+.container {
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  background-color: $blue;
+
+  .wrap {
+    .title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: $white;
+    }
+    .addCurrency {
+      display: inline-block;
+      font-size: 16px;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}

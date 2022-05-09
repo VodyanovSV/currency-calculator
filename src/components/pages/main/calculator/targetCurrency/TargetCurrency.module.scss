@@ -1,0 +1,15 @@
+@import "../../../../../utils/colors";
+
+.container {
+  margin-bottom: 20px;
+
+  .wrap {
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+  }
+}
