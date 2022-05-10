@@ -1,20 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './Calculator.module.scss'
 import BaseCurrency from "./baseCurrency/BaseCurrency";
 import TargetCurrency from "./targetCurrency/TargetCurrency";
 import {useDispatch, useSelector} from "react-redux";
-import {addCurrency} from "../../../../store/actionCreators/targetCurrencyActionCreators";
-import { v4 as uuidv4 } from 'uuid';
-
+import {addTargetCurrency} from "../../../../store/actionCreators/currencyActionCreators";
+import {v4 as uuidv4} from 'uuid';
+import {getAllCurrencies} from '../../../../actions/currency'
 
 const Calculator = () => {
 
-    const currencies = useSelector(state => state.targetCurrencyReduser.currencies)
+    const targetCurrencies = useSelector(state => state.currencyReduser.targetCurrencies)
     const dispatch = useDispatch()
 
     function addToCurrency() {
-        dispatch(addCurrency())
+        dispatch(addTargetCurrency())
     }
+
+    useEffect(() => {
+        dispatch(getAllCurrencies())
+    }, [])
 
     return (
         <div className={styles.container}>
@@ -22,7 +26,7 @@ const Calculator = () => {
                 <p className={styles.title}>Базовая валюта</p>
                 <BaseCurrency/>
                 <p className={styles.title}>Целевые валюты</p>
-                {currencies.map((currency) => (
+                {targetCurrencies.map((currency) => (
                     <TargetCurrency key={uuidv4()}/>
                 ))}
                 <p className={styles.addCurrency} onClick={addToCurrency}>Добавить валюту</p>

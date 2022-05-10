@@ -4,6 +4,7 @@ import MyInput from "../../../../UI/input/MyInput";
 import MySelect from "../../../../UI/select/MySelect";
 
 const BaseCurrency = () => {
+
     return (
         <div className={styles.container}>
             <div className={styles.wrap}>
