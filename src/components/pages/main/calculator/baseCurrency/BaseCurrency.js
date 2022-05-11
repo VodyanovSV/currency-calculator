@@ -1,16 +1,37 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './BaseCurrency.module.scss'
 import MyInput from "../../../../UI/input/MyInput";
 import MySelect from "../../../../UI/select/MySelect";
+import {useDispatch} from "react-redux";
+import {setBaseCurrency} from "../../../../../store/actionCreators/currencyActionCreators";
+import {getAllExchangeRates} from "../../../../../actions/currency";
+import {roundNumber} from "../../../../../utils/functions";
 
 const BaseCurrency = () => {
+
+    const dispatch = useDispatch()
+    const [input, setInput] = useState('')
+    const [select, setSelect] = useState('Валюта')
+
+    const customSetInput = (value) => {
+        let num = roundNumber(value)
+        setInput(num)
+    }
+
+    useEffect(() => {
+        dispatch(setBaseCurrency({name: select, value: input}))
+    }, [input, select])
+
+    useEffect(() => {
+        dispatch(getAllExchangeRates(select))
+    }, [select])
 
     return (
         <div className={styles.container}>
             <div className={styles.wrap}>
                 <div className={styles.content}>
-                    <MyInput/>
-                    <MySelect/>
+                    <MyInput value={input} funcChange={customSetInput}/>
+                    <MySelect value={select} funcChange={setSelect}/>
                 </div>
             </div>
         </div>

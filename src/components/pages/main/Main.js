@@ -3,6 +3,7 @@ import styles from './Main.module.scss'
 import Calculator from "./calculator/Calculator";
 
 const Main = () => {
+
     return (
         <div className={styles.container}>
             <div className={styles.wrap}>

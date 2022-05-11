@@ -9,11 +9,11 @@ import {getAllCurrencies} from '../../../../actions/currency'
 
 const Calculator = () => {
 
-    const targetCurrencies = useSelector(state => state.currencyReduser.targetCurrencies)
+    const countTarget = useSelector(state => state.currencyReduser.countTarget)
     const dispatch = useDispatch()
 
     function addToCurrency() {
-        dispatch(addTargetCurrency())
+        dispatch(addTargetCurrency(countTarget.length))
     }
 
     useEffect(() => {
@@ -26,8 +26,8 @@ const Calculator = () => {
                 <p className={styles.title}>Базовая валюта</p>
                 <BaseCurrency/>
                 <p className={styles.title}>Целевые валюты</p>
-                {targetCurrencies.map((currency) => (
-                    <TargetCurrency key={uuidv4()}/>
+                {countTarget.map((currency, index) => (
+                    <TargetCurrency key={uuidv4()} id={index}/>
                 ))}
                 <p className={styles.addCurrency} onClick={addToCurrency}>Добавить валюту</p>
             </div>
