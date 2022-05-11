@@ -16,10 +16,11 @@ const TargetCurrency = ({id}) => {
     const [input, setInput] = useState(targetCurrency.value)
     const [select, setSelect] = useState(targetCurrency.name)
 
+
     const rate = rates[select]
     let exchange = 0
     if (baseCurrency.value * rate) {
-        exchange = baseCurrency.value * rate
+        exchange = Math.round(baseCurrency.value * rate * 100) / 100
     }
 
     useEffect(() => {
