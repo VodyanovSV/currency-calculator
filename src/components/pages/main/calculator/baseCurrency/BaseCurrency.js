@@ -12,6 +12,7 @@ const BaseCurrency = () => {
     const dispatch = useDispatch()
     const [input, setInput] = useState('')
     const [select, setSelect] = useState('Валюта')
+    const [time, setTime] = useState(Date.now());
 
     const customSetInput = (value) => {
         let num = roundNumber(value)
@@ -23,8 +24,16 @@ const BaseCurrency = () => {
     }, [input, select])
 
     useEffect(() => {
+        console.log('getAllExchangeRates')
         dispatch(getAllExchangeRates(select))
-    }, [select])
+    }, [select, time])
+
+    useEffect(() => {
+        const interval = setInterval(() => setTime(Date.now()), 1000 * 60 * 5);
+        return () => {
+            clearInterval(interval);
+        };
+    }, [])
 
     return (
         <div className={styles.container}>
