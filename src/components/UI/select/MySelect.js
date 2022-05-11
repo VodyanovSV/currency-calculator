@@ -16,10 +16,8 @@ const MySelect = ({value, funcChange}) => {
             {
                 allCurrencies.map((currency) => (
                     <option value={currency} key={currency}>{currency}</option>
-
                 ))
             }
-
         </select>
     );
 };

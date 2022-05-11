@@ -9,14 +9,23 @@ const TargetCurrency = ({id}) => {
 
     const targetCurrencies = useSelector(state => state.currencyReduser.targetCurrencies)
     const targetCurrency = targetCurrencies.find((elem) => (elem.id === id))
+    const baseCurrency = useSelector(state => state.currencyReduser.baseCurrency)
+    const rates = useSelector(state => state.currencyReduser.allRates)
 
     const dispatch = useDispatch()
     const [input, setInput] = useState(targetCurrency.value)
     const [select, setSelect] = useState(targetCurrency.name)
 
+    const rate = rates[select]
+    let exchange = 0
+    if (baseCurrency.value * rate) {
+        exchange = baseCurrency.value * rate
+    }
+
     useEffect(() => {
-        dispatch(setTargetCurrency({id, name: select, value: input}))
-    }, [select])
+        dispatch(setTargetCurrency({id, name: select, value: exchange}))
+        setInput(exchange)
+    }, [select, exchange])
 
     return (
         <div className={styles.container}>

@@ -18,7 +18,7 @@ const initialState = {
     allCurrencies: [],
     baseCurrency: {
         name: '',
-        value: null
+        value: ''
     },
     allRates: {}
 
