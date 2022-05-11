@@ -24,6 +24,7 @@ const BaseCurrency = () => {
     }, [input, select])
 
     useEffect(() => {
+        console.log('getAllExchangeRates')
         dispatch(getAllExchangeRates(select))
     }, [select, time])
 
